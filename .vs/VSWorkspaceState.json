@@ -3,8 +3,7 @@
     "",
     "\\GuessGame",
     "\\GuessGame\\GuessGame",
-    "\\Leap Years",
-    "\\Pig Latin\\Pig Latin"
+    "\\Leap Years"
   ],
   "SelectedNode": "\\GuessGame\\GuessGame\\Program.cs",
   "PreviewInSolutionExplorer": false
