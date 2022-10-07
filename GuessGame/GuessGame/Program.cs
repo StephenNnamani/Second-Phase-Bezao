@@ -43,10 +43,42 @@ namespace GuessGame
             Console.WriteLine("=============================================================================================");
             Console.WriteLine(@"Welcome to STEPHEN'S GUESS GAME
 Here you have 5 attempts to get the correct secret random number. 
-Each attempt tells you if you are higher or lower than the secret number. and the secret number changes after each game");
-            Console.WriteLine("============================================================================================= \n");
+Each attempt tells you if you are higher or lower than the secret number. and the secret number changes after each game.");
+            Console.WriteLine("============================================================================================= \n \nFirst, tell us about yourself \n");
 
+            Users newUser = new Users();
 
+            Console.Write("Type in your First name: ");
+            var firstName = newUser.firstName;
+            firstName = Console.ReadLine();
+
+            Console.Write("Type in your Last name: ");
+            var lastName = newUser.lastName;
+            lastName = Console.ReadLine();
+
+            Console.Write("Type in your age: ");
+            var age = newUser.age;
+            age = Convert.ToInt64(Console.ReadLine());
+         
+            Console.Write("Type in your height: ");
+            var height = newUser.height;
+            height = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Type in your Skin Color: ");
+            var complexion = newUser.complexion;
+            complexion = Console.ReadLine();
+
+            Console.Write("Type in your State: ");
+            var state = newUser.state;
+            state = Console.ReadLine();
+
+            Console.Write("Type in your Country: ");
+            var Country = newUser.Country;
+            Country = Console.ReadLine();
+            Console.WriteLine($"\n\n\nNow let's play the game, {firstName}");
+
+            var played = 0;
+            var won = 0;
             while (playAgain)
             {
                 int limitedGuess = 5;                    //The number of times to remaining to play
@@ -81,19 +113,24 @@ Each attempt tells you if you are higher or lower than the secret number. and th
                         Console.WriteLine(guess + " is to low!");
                     }
 
-                    Console.WriteLine($"You have {limitedGuess} number of tries remaining");
-                    if (limitedGuess == 1)
+                    if(SecretNumber != guess){
+                        Console.WriteLine($"You have {limitedGuess} number of tries remaining");
+                    }
+                    if (limitedGuess == 1 && SecretNumber != guess)
                     {
                         Console.WriteLine("This is your last try");
                     }
+                    played++;
                     if (SecretNumber == guess)
                     {
                         var count = guessedNumbers.Count();
-                        Console.WriteLine("The Secret Number is: " + SecretNumber);
                         Console.WriteLine("YOU WIN!");
+                        Console.WriteLine("The Secret Number is: " + SecretNumber);
                         Console.WriteLine("Number of Tries: " + count);
                         winORlose = "You WON!!!";
+                        won++;
                     }
+
                 }
                 
 
@@ -117,42 +154,22 @@ Each attempt tells you if you are higher or lower than the secret number. and th
             }
                 Console.WriteLine("Thanks for playing! ... I guess");
 
-            Users newUser = new Users();
-
-            Console.Write("Type in your First name: ");
-            var firstName = newUser.firstName;
-            firstName = Console.ReadLine();
-
-            Console.Write("Type in your Last name: ");
-            var lastName = newUser.lastName;
-            lastName = Console.ReadLine();
-
-            Console.Write("Type in your age: ");
-            var age = newUser.age;
-            age = Convert.ToInt64(Console.ReadLine());
-         
-            Console.Write("Type in your height: ");
-            var height = newUser.height;
-            height = Convert.ToDouble(Console.ReadLine());
-
-            Console.Write("Type in your Skin Color: ");
-            var complexion = newUser.complexion;
-            complexion = Console.ReadLine();
-
-            Console.Write("Type in your State: ");
-            var state = newUser.state;
-            state = Console.ReadLine();
-
-            Console.Write("Type in your Country: ");
-            var Country = newUser.Country;
-            Country = Console.ReadLine();
 
              Console.WriteLine($@"
-My name is: {firstName} {lastName}, and I am from {state}.
-my age is: {age} and I am {complexion} in complexion, with a height of {height}cm. I am from {Country} and my state of Birth is {state}. and {winORlose} the game
+Name:                   {firstName} {lastName}
+Age:                    {age}
+State:                  {state}
+Country:                {Country}
+complexion:             {complexion}
+Height:                 {height}cm
+
+Game:                   {winORlose} the game
+Games Played:           {played}
+Number of Guesses won:  {won};
+Number of Guesses lost: {played - won};
 Thank You");
 
-            currency();
+            //currency();
            
             Console.ReadKey();
             
