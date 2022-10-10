@@ -31,11 +31,11 @@ namespace Pig_Latin
                 {
                     Console.WriteLine("Type in the English words you wish to translate back to Pig Latin: ");
                     Comments = Console.ReadLine();
-                    foreach (string letters in Comments.Split(' '))
+                    foreach (string words in Comments.Split(' '))
                     {
-                        string firstLetter = letters.Substring(0, 1);
+                        string firstLetter = words.Substring(0, 1);
                     
-                        string restOfWord = letters.Substring(1, letters.Length - 1);
+                        string restOfWord = words.Substring(1, words.Length - 1);
 
                         string Converted = restOfWord+firstLetter+ay + " ";
 
@@ -48,7 +48,7 @@ namespace Pig_Latin
                         // Creates a TextInfo based on the "en-US" culture.
                         TextInfo myTI = new CultureInfo("en-US",false).TextInfo;
                         var result = r.Replace(lowerCase, s => s.Value.ToUpper());
-                        Console.Write(myTI.ToTitleCase(result));
+                        Console.Write(myTI.ToTitleCase(result) + " ");
                     }
                 
                 }
@@ -57,34 +57,38 @@ namespace Pig_Latin
                     string latinCapture;
                     Console.WriteLine("Type in the latin words you wish to translate back to English: ");
                     latinCapture = Console.ReadLine();
+
+                    string lastThree;
+                    
                     foreach (string letters in latinCapture.Split(' '))
                     {
                         //Capturing the last three letters of each word
-                        string lastThree = letters.Substring(letters.Length-3);
-                       // Console.WriteLine(lastThree);
-                        string firstLetter;
-
-                        foreach(char letter in lastThree.IndexOf(0))
-                        {
-                            firstLetter = Char.ToString(letter);
-                            Console.WriteLine(firstLetter);
-                        } 
-
+                        lastThree = letters.Substring(letters.Length - 3);
+                        //extracting the first letter of the lastThree
+                        var firstLetter = lastThree.Remove(1, 2);
+                        //The rest of the words without the last three
                         string restOfWord = letters.Substring(0, letters.Length - 3);
+                        // Concatenation of all the words
+                        string Converted = firstLetter+restOfWord + " ";
 
-                      // string Converted = firstLetter+restOfWord + " ";
-
-                       //Console.WriteLine(Converted);
+                        Console.Write(Converted);
                     }
                 }
                 else
                 {
                     Console.WriteLine("Please select the RIGHT option i.e either 1 or 2");
                 }
+                Console.WriteLine("\n\n");
+                Console.Write("Do you want to Translate anything else? Y or N:   ");
+                var res = Console.ReadLine(); res = res.ToLower();
+                if (res == "n")
+                {
+                    break;
+                }
             }
                 
 
-                Console.WriteLine("\n =============================================================================================");
+               /* Console.WriteLine("\n =============================================================================================");
                 Console.WriteLine("Do you want to translate again?(Y/N): ");
                 var newPlay = Console.ReadLine();
 
@@ -96,7 +100,7 @@ namespace Pig_Latin
                 }else if (newPlay == "Y" || newPlay == "y")
                 {
                     translateAgain = true;
-                }
+                } */
             
                 Console.WriteLine("Press any key to terminate");
                 Console.ReadKey();

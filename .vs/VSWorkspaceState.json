@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GuessGame",
-    "\\GuessGame\\GuessGame",
-    "\\Leap Years"
+    "\\Pig Latin",
+    "\\Pig Latin\\Pig Latin"
   ],
-  "SelectedNode": "\\GuessGame\\GuessGame\\Program.cs",
+  "SelectedNode": "\\Pig Latin\\Pig Latin\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
